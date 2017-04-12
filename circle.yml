@@ -1,4 +1,11 @@
 test:
   override:
     - exit 0
-
+deployment:
+  staging:
+    branch: master
+    commands:
+      - heroku plugins:install heroku-container-registry
+      - heroku container:login
+      - heroku create
+      - heroku container:push web
